@@ -1,130 +1,171 @@
-# Text Summarizer
+# 📝 Text Summarizer
 
-## Workflows
+A simple and scalable end-to-end NLP project that performs automatic text summarization using the Hugging Face Transformers library and modern MLOps practices.
 
-1. Update config.yaml
-2. Update params.yaml
-3. Update entity
-4. Update the configuration manager in src config
-5. update the conponents
-6. update the pipeline
-7. update the main.py
-8. update the app.py
+---
 
+## 🚀 Features
 
-# How to run?
-### STEPS:
+- 📚 Summarizes large chunks of text
+- 🤖 Uses pre-trained Transformer models (`t5-small`, `facebook/bart-large-cnn`, etc.)
+- 📦 Packaged as a Python module for reuse
+- ✅ Logging & YAML-based configuration management
+- 📁 Training pipeline support (data ingestion, model training, evaluation)
+- 🛠️ Modular, extensible, and production-ready structure
 
-Clone the repository
+---
 
-```bash
-https://github.com/Sumit191105/Text-Summarizer
-```
-### STEP 01- Create a conda environment after opening the repository
+## 📂 Project Structure
 
-```bash
-conda create -n summary python=3.8 -y
 ```
 
+Text-Summarizer/
+├── .github/workflows          # CI/CD via GitHub Actions
+├── config/                    # YAML config files
+├── logs/                      # Log files
+├── notebooks/                 # Jupyter experiments
+├── research/                  # Initial experimentation scripts
+├── src/
+│   └── textSummarizer/
+│       ├── **init**.py
+│       ├── logging.py
+│       ├── components/
+│       └── utils/
+├── tests/                     # Unit tests
+├── main.py                    # Entry point
+├── setup.py                   # Install script
+├── requirements.txt
+└── README.md
+
+````
+
+---
+
+## ⚙️ Installation
+
+1. **Clone the repository**  
 ```bash
-conda activate summary
+git clone https://github.com/Sumit191105/Text-Summarizer.git
+cd Text-Summarizer
+````
+
+2. **Create a virtual environment**
+
+```bash
+conda create -n textS python=3.10 -y
+conda activate textS
 ```
 
+3. **Install dependencies**
 
-### STEP 02- install the requirements
 ```bash
 pip install -r requirements.txt
 ```
 
+4. **(Optional) Install in editable mode**
 
 ```bash
-# Finally run the following command
-python app.py
+pip install -e .
 ```
 
-Now,
+---
+
+## 🧪 Usage
+
+### 🔹 Running the summarizer
+
 ```bash
-open up you local host and port
+python -m src.textSummarizer.main
 ```
 
+or from within Python:
 
-```bash
-Author: Sumit Verma
-Email: sumitverm191105@gmail.com
+```python
+from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+
+pipeline = DataIngestionTrainingPipeline()
+pipeline.main()
+```
+
+---
+
+## 🧾 Example Output
+
+**Input:**
+
+> Alice and Bob had a meeting to discuss the quarterly earnings. They agreed that the revenue had increased by 20% and expenses had decreased significantly.
+
+**Output:**
+
+> Alice and Bob met and discussed improved earnings.
+
+---
+
+## 🧰 Tech Stack
+
+* 🐍 Python 3.10
+* 🤗 Hugging Face Transformers & Datasets
+* 📜 YAML config
+* 🧪 PyTest
+* 📦 Box, Ensure
+* 🚀 GitHub Actions (CI/CD ready)
+
+---
+
+## 📄 Configuration
+
+All settings (paths, parameters) are managed via YAML in the `config/` directory.
+
+---
+
+## 🔍 Research & Training
+
+Use the `notebooks/` and `research/` folders for fine-tuning and experiments.
+
+You can load the SAMSum dataset like so:
+
+```python
+from datasets import load_dataset
+dataset = load_dataset("samsum")
+```
+
+Or load a saved one:
+
+```python
+from datasets import load_from_disk
+dataset = load_from_disk("samsum_dataset")
+```
+
+---
+
+## 🐛 Reporting Issues
+
+If you encounter any bugs or have feature requests, please open an [issue](https://github.com/Sumit191105/Text-Summarizer/issues).
+
+---
+
+## 👨‍💻 Author
+
+**Sumit Verma**
+[GitHub Profile](https://github.com/Sumit191105)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## ⭐️ Show Your Support
+
+If you found this project helpful or interesting, consider giving it a ⭐️ on GitHub.
+
+---
 
 ```
 
+---
 
-
-# AWS-CICD-Deployment-with-Github-Actions
-
-## 1. Login to AWS console.
-
-## 2. Create IAM user for deployment
-
-	#with specific access
-
-	1. EC2 access : It is virtual machine
-
-	2. ECR: Elastic Container registry to save your docker image in aws
-
-
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Lauch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 566373416292.dkr.ecr.us-east-1.amazonaws.com/text-s
-
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-# 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
+Let me know if you'd like to add badges (e.g., build passing, license) or deployment instructions (like Streamlit or FastAPI).
+```
