@@ -1,4 +1,4 @@
-# End to end Text-Summarizer-Project
+# Text Summarizer
 
 ## Workflows
 
