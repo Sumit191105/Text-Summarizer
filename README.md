@@ -138,11 +138,6 @@ dataset = load_from_disk("samsum_dataset")
 
 ---
 
-## 🐛 Reporting Issues
-
-If you encounter any bugs or have feature requests, please open an [issue](https://github.com/Sumit191105/Text-Summarizer/issues).
-
----
 
 ## 👨‍💻 Author
 
@@ -154,18 +149,3 @@ If you encounter any bugs or have feature requests, please open an [issue](https
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
-
----
-
-## ⭐️ Show Your Support
-
-If you found this project helpful or interesting, consider giving it a ⭐️ on GitHub.
-
----
-
-```
-
----
-
-Let me know if you'd like to add badges (e.g., build passing, license) or deployment instructions (like Streamlit or FastAPI).
-```
